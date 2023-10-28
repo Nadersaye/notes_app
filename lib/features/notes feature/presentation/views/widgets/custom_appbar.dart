@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'custom_search_icon.dart';
+import 'custom_icon.dart';
 
 class CustomAppbar extends StatelessWidget {
   const CustomAppbar({super.key, required this.tiltle, required this.icon});
@@ -14,7 +14,7 @@ class CustomAppbar extends StatelessWidget {
           tiltle,
           style: const TextStyle(fontSize: 28),
         ),
-        CustomSearchIcon(
+        CustomIcon(
           icon: icon,
         )
       ],
