@@ -7,6 +7,7 @@ class CustomAddNoteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      height: 60,
       color: AppColors.primaryColor,
       minWidth: MediaQuery.sizeOf(context).width,
       shape: RoundedRectangleBorder(

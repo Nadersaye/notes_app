@@ -9,6 +9,7 @@ class CustomNoteTextFormfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
           hintText: hint,
