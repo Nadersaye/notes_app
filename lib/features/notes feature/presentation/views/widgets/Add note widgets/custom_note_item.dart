@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'notes_item_content.dart';
+import 'add_notes_item_content.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key});
@@ -12,7 +12,7 @@ class CustomNoteItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: const Color(0xffffcc80),
       ),
-      child: const NotesItemContent(),
+      child: const AddNotesItemContent(),
     );
   }
 }
