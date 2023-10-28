@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/core/utils/colors.dart';
 
 class CustomNoteTextFormfield extends StatelessWidget {
   const CustomNoteTextFormfield(
@@ -8,11 +9,11 @@ class CustomNoteTextFormfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: const Color(0xff62fcd7),
+      cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
           hintText: hint,
           focusedBorder:
-              customTextformfieldBorder(borderColor: const Color(0xff62fcd7)),
+              customTextformfieldBorder(borderColor: AppColors.primaryColor),
           enabledBorder: customTextformfieldBorder(borderColor: null)),
     );
   }
