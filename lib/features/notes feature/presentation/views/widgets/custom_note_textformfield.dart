@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomNoteTextFormfield extends StatelessWidget {
-  const CustomNoteTextFormfield({super.key, required this.hint});
+  const CustomNoteTextFormfield(
+      {super.key, required this.hint, this.maxLines = 1});
   final String hint;
+  final int maxLines;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
