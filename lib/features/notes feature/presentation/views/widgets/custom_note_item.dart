@@ -6,13 +6,13 @@ class CustomNoteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.fromLTRB(16, 24, 0, 24),
-      child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
         color: const Color(0xffffcc80),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-        child: const NotesItemContent(),
       ),
+      child: const NotesItemContent(),
     );
   }
 }
