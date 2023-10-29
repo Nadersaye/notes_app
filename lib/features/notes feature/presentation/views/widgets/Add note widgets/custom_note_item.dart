@@ -4,8 +4,8 @@ import '../../edit_note_view.dart';
 import 'add_notes_item_content.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  const CustomNoteItem({super.key, required this.notes});
-  final NoteModel notes;
+  const CustomNoteItem({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,9 +18,11 @@ class CustomNoteItem extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 24, 0, 24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Color(notes.color),
+          color: Color(note.color),
         ),
-        child: const AddNotesItemContent(),
+        child: AddNotesItemContent(
+          note: note,
+        ),
       ),
     );
   }
