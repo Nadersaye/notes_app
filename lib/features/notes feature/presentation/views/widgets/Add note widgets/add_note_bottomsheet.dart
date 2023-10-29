@@ -41,7 +41,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
           CustomNoteTextFormfield(
             hint: 'title',
-            formKey: formKey,
             onSavedData: (value) {
               title = value;
             },
@@ -55,7 +54,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
             hint: 'content',
             maxLines: 5,
-            formKey: formKey,
           ),
           const SizedBox(
             height: 32,

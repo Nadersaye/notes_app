@@ -7,13 +7,11 @@ class CustomNoteTextFormfield extends StatelessWidget {
       required this.hint,
       this.maxLines = 1,
       this.onSavedData,
-      this.formKey,
       this.onChanged});
   final String hint;
   final int maxLines;
   final void Function(String?)? onSavedData;
   final void Function(String)? onChanged;
-  final GlobalKey<FormState>? formKey;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
