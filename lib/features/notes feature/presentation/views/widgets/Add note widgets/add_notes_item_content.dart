@@ -14,7 +14,9 @@ class AddNotesItemContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const CustomNotesListTile(),
+        CustomNotesListTile(
+          note: note,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Text(
@@ -27,29 +29,42 @@ class AddNotesItemContent extends StatelessWidget {
   }
 }
 
-class CustomNotesListTile extends StatelessWidget {
+class CustomNotesListTile extends StatefulWidget {
   const CustomNotesListTile({
     super.key,
+    required this.note,
   });
+  final NoteModel note;
 
+  @override
+  State<CustomNotesListTile> createState() => _CustomNotesListTileState();
+}
+
+class _CustomNotesListTileState extends State<CustomNotesListTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: const Text(
-        'Flutter Tips',
-        style: TextStyle(color: Colors.black, fontSize: 26),
+      title: Text(
+        widget.note.title,
+        style: const TextStyle(color: Colors.black, fontSize: 26),
       ),
       subtitle: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16),
         child: Text(
-          'Build your career with nader sayed',
+          widget.note.subtitle,
           style: TextStyle(color: Colors.black.withOpacity(.5), fontSize: 18),
         ),
       ),
-      trailing: const Icon(
-        FontAwesomeIcons.trash,
-        color: Colors.black,
-        size: 25,
+      trailing: GestureDetector(
+        onTap: () {
+          widget.note.delete();
+          setState(() {});
+        },
+        child: const Icon(
+          FontAwesomeIcons.trash,
+          color: Colors.black,
+          size: 25,
+        ),
       ),
     );
   }

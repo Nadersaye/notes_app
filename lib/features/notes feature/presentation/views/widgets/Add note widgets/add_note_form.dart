@@ -4,6 +4,7 @@ import 'package:notes_app/features/notes%20feature/data/models/note_model.dart';
 import 'package:notes_app/features/notes%20feature/presentation/manager/add%20notes%20cubit/add_notes_cubit.dart';
 import '../custom_note_textformfield.dart';
 import 'custom_add_note_button.dart';
+import 'package:intl/intl.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -54,10 +55,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
+                    var dataNow = DateTime.now();
+                    var formatedData = DateFormat('dd_mm_yyyy').format(dataNow);
                     var noteModel = NoteModel(
                         title: title!,
                         subtitle: subtitle!,
-                        date: DateTime.now().toString(),
+                        date: formatedData,
                         color: Colors.blue.value);
                     BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
                   } else {
