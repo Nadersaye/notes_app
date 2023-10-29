@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/core/utils/colors.dart';
 
 class CustomAddNoteButton extends StatelessWidget {
-  const CustomAddNoteButton({super.key});
-
+  const CustomAddNoteButton({super.key, this.onTap});
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -13,7 +13,7 @@ class CustomAddNoteButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      onPressed: () {},
+      onPressed: onTap,
       child: const Text(
         'Add',
         style: TextStyle(
