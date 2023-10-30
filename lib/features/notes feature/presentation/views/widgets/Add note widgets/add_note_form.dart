@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/features/notes%20feature/data/models/note_model.dart';
 import 'package:notes_app/features/notes%20feature/presentation/manager/add%20notes%20cubit/add_notes_cubit.dart';
+import 'package:notes_app/features/notes%20feature/presentation/manager/notes%20cubit/notes_cubit.dart';
 import '../custom_note_textformfield.dart';
 import 'custom_add_note_button.dart';
 import 'package:intl/intl.dart';
@@ -9,10 +10,7 @@ import 'package:intl/intl.dart';
 import 'custom_color_listview.dart';
 
 class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({
-    super.key,
-  });
-
+  const AddNoteForm({super.key});
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
@@ -47,6 +45,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hint: 'content',
             maxLines: 5,
           ),
+          const SizedBox(
+            height: 32,
+          ),
           const CustomColorListview(),
           const SizedBox(
             height: 32,
@@ -73,12 +74,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       var dataNow = DateTime.now();
-      var formatedData = DateFormat('dd_mm_yyyy').format(dataNow);
+      var formatedData = DateFormat('dd_MM_yyyy').format(dataNow);
       var noteModel = NoteModel(
           title: title!,
           subtitle: subtitle!,
           date: formatedData,
-          color: Colors.blue.value);
+          color: BlocProvider.of<NotesCubit>(context).color?.value ??
+              Colors.purple.value);
       BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
     } else {
       autovalidateMode = AutovalidateMode.always;

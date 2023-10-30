@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/features/notes%20feature/presentation/manager/notes%20cubit/notes_cubit.dart';
+import 'package:notes_app/features/notes%20feature/presentation/views/widgets/Edit%20note%20widgets/custom_edit_color_listview.dart';
 import '../../../../data/models/note_model.dart';
 import '../custom_appbar.dart';
 import '../custom_note_textformfield.dart';
@@ -13,7 +14,7 @@ class EditNoteViewBody extends StatefulWidget {
 }
 
 class _EditNoteViewBodyState extends State<EditNoteViewBody> {
-  String title = '', substitle = '';
+  String? title, substitle;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,8 +28,8 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             tiltle: 'Edit Notes',
             icon: Icons.check,
             onTap: () {
-              widget.note.title = title;
-              widget.note.subtitle = substitle;
+              widget.note.title = title ?? widget.note.title;
+              widget.note.subtitle = substitle ?? widget.note.subtitle;
               BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               Navigator.of(context).pop();
             },
@@ -51,6 +52,12 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               substitle = value;
             },
           ),
+          const SizedBox(
+            height: 32,
+          ),
+          CustomEditColorListview(
+            note: widget.note,
+          )
         ],
       ),
     );
