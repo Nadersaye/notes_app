@@ -15,7 +15,7 @@ class CustomNoteItem extends StatelessWidget {
         }));
       },
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 24, 0, 24),
+        padding: const EdgeInsets.fromLTRB(16, 20, 0, 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: Color(note.color),
