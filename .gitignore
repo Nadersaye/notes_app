@@ -9,7 +9,8 @@
 .history
 .svn/
 migrate_working_dir/
-
+lib/features/notes feature/presentation/views/widgets/Add note widgets/custom_color_listview_item.dart
+lib/features/notes feature/presentation/views/widgets/Add note widgets/custom_color_listview.dart
 # IntelliJ related
 *.iml
 *.ipr

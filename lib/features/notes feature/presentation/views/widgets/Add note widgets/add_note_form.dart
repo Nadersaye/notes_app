@@ -6,6 +6,8 @@ import '../custom_note_textformfield.dart';
 import 'custom_add_note_button.dart';
 import 'package:intl/intl.dart';
 
+import 'custom_color_listview.dart';
+
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
     super.key,
@@ -45,6 +47,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hint: 'content',
             maxLines: 5,
           ),
+          const CustomColorListview(),
           const SizedBox(
             height: 32,
           ),
@@ -53,20 +56,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               return CustomAddNoteButton(
                 isLoading: state is AddNotesLoading ? true : false,
                 onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    var dataNow = DateTime.now();
-                    var formatedData = DateFormat('dd_mm_yyyy').format(dataNow);
-                    var noteModel = NoteModel(
-                        title: title!,
-                        subtitle: subtitle!,
-                        date: formatedData,
-                        color: Colors.blue.value);
-                    BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
+                  validateData(context);
                 },
               );
             },
@@ -77,5 +67,22 @@ class _AddNoteFormState extends State<AddNoteForm> {
         ],
       ),
     );
+  }
+
+  void validateData(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      var dataNow = DateTime.now();
+      var formatedData = DateFormat('dd_mm_yyyy').format(dataNow);
+      var noteModel = NoteModel(
+          title: title!,
+          subtitle: subtitle!,
+          date: formatedData,
+          color: Colors.blue.value);
+      BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
+    } else {
+      autovalidateMode = AutovalidateMode.always;
+      setState(() {});
+    }
   }
 }
